@@ -1,0 +1,48 @@
+{
+  "name": "films",
+  "version": "1.0.0",
+  "description": "This exercise will help you to understand how you can interact with the DOM API using Javascript to acomplish different common tasks in a user interface.",
+  "private": true,
+  "scripts": {
+    "serve": "http-server -c-1",
+    "build": "npm-run-all clean lint --parallel build:css copy:**",
+    "build:css": "node-sass src/index.scss public/style.css --output-style compressed",
+    "lint": "npm-run-all lint:**",
+    "lint:css": "stylelint 'src/**/*.scss' --config .stylelintrc --syntax scss",
+    "lint:js": "standard 'src/**/*.js'",
+    "copy:html": "copy 'src/**/*.html' public",
+    "copy:js": "copy 'src/**/*.js' public",
+    "watch:html": "onchange 'src/**/*.html' -- npm run copy:html",
+    "watch:css": "npm run build:css -- -w --source-map true",
+    "watch:js": "onchange 'src/**/*.js' -- npm-run-all copy:js",
+    "start:build": "npm-run-all build serve",
+    "start": "npm-run-all build:css --parallel watch:** serve",
+    "clean": "rm -rf public/",
+    "precommit": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yeison0416/films.git"
+  },
+  "author": "Yeison Sánchez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yeison0416/films/issues"
+  },
+  "homepage": "https://github.com/Yeison0416/films#readme",
+  "dependencies": {
+    "reset-css": "^2.2.1",
+    "standard": "^10.0.3"
+  },
+  "devDependencies": {
+    "copy": "^0.3.1",
+    "http-server": "^0.10.0",
+    "husky": "^0.14.3",
+    "node-sass": "^4.7.2",
+    "npm-run-all": "^4.1.2",
+    "onchange": "^3.3.0",
+    "stylelint": "^8.4.0",
+    "stylelint-config-recommended-scss": "^3.0.0",
+    "stylelint-scss": "^2.2.0"
+  }
+}

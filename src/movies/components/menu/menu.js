@@ -1,7 +1,8 @@
 export class Menu {
-  constructor (node, data) {
+  constructor (node, data, callback) {
     this.node = node
     this.data = data
+    this.callback = callback
     this.elements = {}
     this.setframeworkMenu()
     this.setlistButtons(data)
@@ -14,7 +15,6 @@ export class Menu {
         `<ul class="Menu__container-ButtonsMenu"></ul>
         <button class="Menu__buttonReset">reset</button>`
       ),
-
       listbutton: (
         `<li class="Menu__style-listbuttons">
           <input type="button" value="" class="Menu__buttons"></input>
@@ -59,11 +59,6 @@ export class Menu {
       const index = elementsButtonsToArray.indexOf(clickedElement)
       var categorytoShow = this.elements.Buttons[index].value
     }
-
-   const datafiltered = this.data.filter((categoryfiltered) => {
-      return categoryfiltered.category.toUpperCase() == categorytoShow.toUpperCase()
-   })
-   
-   console.log(datafiltered)
+    this.callback(categorytoShow)
   }
 }

@@ -4,19 +4,21 @@ export class Grid {
     this.elements = {}
     this.setframeworkGrid(data)
     this.setListImage(data)
+    this.setEvents(data)
   }
-
+/* eslint-disable */
   static get states () {
     return {
       notshowgrid: 'Grid__list-images--notshow'
     }
   }
-/* eslint-disable */
+
   static get templates () {
     return {
       frameworkGrid: (
         `<li class="Grid__list-images" data-category="">
           <img class="Grid__image" src="">
+          <div class="Grid__informationcard">information image</div>
         </li>`
       )
     }
@@ -51,5 +53,25 @@ export class Grid {
       }
     })
   }
-/* eslint-disable */
+
+  setEvents () {
+    this.node.addEventListener('click', this.RotateCard.bind(this))
+  }
+
+  RotateCard () {
+    const clickedElement = event.target
+    const tag_clicked = clickedElement.nodeName
+    console.log(tag_clicked)
+    
+    // if (tag_clicked == "IMG"  || tag_clicked == "DIV") {
+    //   this.node.classList.toggle('RotateCard')
+    // }
+    
+    // 
+    // console.log(IndexCard)
+    
+    
+  }
+  /* eslint-disable */
+
 }

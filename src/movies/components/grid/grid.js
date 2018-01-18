@@ -11,7 +11,7 @@ export class Grid {
       notshowgrid: 'Grid__list-images--notshow'
     }
   }
-
+/* eslint-disable */
   static get templates () {
     return {
       frameworkGrid: (
@@ -21,7 +21,7 @@ export class Grid {
       )
     }
   }
-/* eslint-disable */
+
   setframeworkGrid (data) {
     const listHtml = Grid.templates.frameworkGrid
     const arraylistHtml = new Array(data.length)
@@ -29,7 +29,7 @@ export class Grid {
     this.node.innerHTML = listsHtml
     this.elements.cards = document.querySelectorAll('.Grid__list-images')
     this.elements.cards.forEach((element, index) => {
-      this.elements.cards[index].dataset.category = data[index].category
+      this.elements.cards[index].dataset.category = data[index].category.toUpperCase()
     })
   }
 
@@ -43,8 +43,11 @@ export class Grid {
   selectCategory (category) {
     this.elements.cards.forEach((element, index) => {
       this.elements.cards[index].classList.remove(Grid.states.notshowgrid)
-      if (this.elements.cards[index].dataset.category.toUpperCase() !== category.toUpperCase()) {
+      if (this.elements.cards[index].dataset.category !== category) {
         this.elements.cards[index].classList.add(Grid.states.notshowgrid)
+      }
+      if(category == "ShowAllCategories") {
+        this.elements.cards[index].classList.remove(Grid.states.notshowgrid)
       }
     })
   }

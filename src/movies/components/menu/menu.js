@@ -26,6 +26,7 @@ export class Menu {
   setframeworkMenu () {
     this.node.innerHTML = Menu.templates.frameworkMenu
     this.elements.ButtonsContainer = document.querySelector('.Menu__container-ButtonsMenu')
+    this.elements.ButtonReset = document.querySelector('.Menu__buttonReset')
   }
 
   setlistButtons (data) {
@@ -49,6 +50,7 @@ export class Menu {
 
   setEvents (data) {
     this.elements.ButtonsContainer.addEventListener('click', this.selectCategory.bind(this))
+    this.elements.ButtonReset.addEventListener('click', this.ShowAllCategories.bind(this))
   }
 
   selectCategory (event) {
@@ -57,8 +59,17 @@ export class Menu {
     const elementsButtonsToArray = Array.apply(null, this.elements.Buttons)
     if(tag_clicked == 'INPUT') {
       const index = elementsButtonsToArray.indexOf(clickedElement)
-      var categorytoShow = this.elements.Buttons[index].value
+      const categorytoShow = this.elements.Buttons[index].value
+      this.callback(categorytoShow)
     }
-    this.callback(categorytoShow)
+  }
+
+  ShowAllCategories (event) {
+    const clickedElement = event.target
+    const tag_clicked = clickedElement.nodeName
+    if(tag_clicked == 'BUTTON') {
+      const ShowAllCategories = "ShowAllCategories"
+      this.callback(ShowAllCategories)
+    }
   }
 }

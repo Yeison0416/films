@@ -16,10 +16,14 @@
 		list-style: none;
 		transition: transform 3s;
 		transform-style: preserve-3d;
-		background-color: red;
 
 		&--notshow{
 			display: none;
+		}
+
+		&--rotatecard{
+			transform: rotateY( 180deg ) ;
+    		transition: transform 3s;
 		}
 	}
 
@@ -44,14 +48,5 @@
 		text-align: center;
 		cursor: pointer;
 		transform: rotateY(180deg);
-	}
-}
-
-.RotateCard {
-	.Grid {
-		&__list-images{
-			transform: rotateY( 180deg ) ;
-    		transition: transform 3s;
-		}
 	}
 }

@@ -1,12 +1,26 @@
 export class Grid {
-  constructor (node, data, category) {
+  constructor (node, data, callback) {
     this.node = node
+    this.callback = callback
     this.elements = {}
+    this.buildUI(data)
     this.setframeworkGrid(data)
     this.setListImage(data)
     this.setEvents(data)
   }
 /* eslint-disable */
+  buildUI (data) {
+    console.log('funcionando')
+    // const Cards = data.map((AllElements) => {
+    //   return new Card(AllElements.category, this.callback)
+    // })
+    // console.log(buttons)
+
+    // buttons.forEach((button) => {
+    //   console.log(this.node.appendChild(button.node))
+    //   this.node.appendChild(button.node)
+    // })
+  }
   static get states () {
     return {
       notshowgrid: 'Grid__list-images--notshow'

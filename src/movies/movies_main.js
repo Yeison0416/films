@@ -7,5 +7,7 @@ const menu = new Menu (document.querySelector('.Menu'), data,
 function (category) {
     grid.selectCategory(category)
 })
-const grid = new Grid (document.querySelector('.Grid'), data)
+const grid = new Grid (document.querySelector('.Grid'), data, (cardclicked) =>{
+    console.log(cardclicked)
+})
 /* eslint-disable */
